@@ -13,14 +13,7 @@ class Change_data(forms.ModelForm):
         fields = ("score",)
 
 
-class ac(forms.Form):
-    on = forms.BooleanField(required=False)
-    city = forms.CharField(max_length=100)
-    ac_temp = forms.CharField(max_length=100)
-
-
 class AppliancesForm(forms.ModelForm):
-    
     class Meta:
         model = Appliances
         fields = "__all__"

@@ -11,6 +11,5 @@ urlpatterns = [
     path("", csrf_exempt(views.Uview)),
     path('api/', include(router.urls)),
     path('api/change/<int:id>', csrf_exempt(views.ScoreUpdate)),
-    path('api/ac/', csrf_exempt(views.Tempc)),
     path('api/appliances/', csrf_exempt(views.a_view)),
 ]

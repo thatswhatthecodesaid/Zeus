@@ -64,3 +64,19 @@ def ac_task(request):
     ap = json.loads(ap)
     return JsonResponse(ap, safe=False)
 
+
+def usageView(request):
+    if request.method == "POST":
+        form = UsageForm(request.POST)
+        if form.is_valid():
+            appliance = form.cleaned_data['appliance']
+            start = form.cleaned_data['start']
+            stop = form.cleaned_data['stop']
+            x = Usage(appliance=appliance, start=start, stop=stop)
+            x.save()
+    else:
+        form = UsageForm()
+
+    return render(request, "iot/us.html", {
+        "form" : form
+    })

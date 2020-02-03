@@ -46,39 +46,6 @@ def ScoreUpdate(request,id):
     return JsonResponse("{'Change_info'}", safe=False)
 
 
-def Tempc(request):
-    if request.method == "POST":
-        form = ac(request.POST)
-        print(request.method)
-        if form.is_valid():
-            on = form.cleaned_data['on']
-            ac_temp = form.cleaned_data['ac_temp']
-            city = form.cleaned_data['city']
-            ac_temp = float(ac_temp)
-            print(f'''
-            bool = {on}
-            temp = {ac_temp}
-            city = {city}
-            Data collected
-            ''')
-            task = Tempc2(city, on, ac_temp)
-            ap = {
-                'ac_temp': ac_temp,
-                'city' : city,
-                'ac_state' : on,
-                'task': task,
-            }
-            ap = json.dumps(ap)
-            ap = json.loads(ap)
-            return JsonResponse(ap, safe=False)
-    else:
-        form = ac()
-        ac_temp = 0
-    return render(request, "main/temp.html", {
-        "form" : form
-    })
-
-
 def a_view(request):
     if request.method == "POST":
         form = AppliancesForm(request.POST)
